@@ -59,3 +59,9 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+// HTTP
+// HTML
+// JSON
+// FETCH calls to the backend
+// PDF
