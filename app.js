@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+require('./lib/models')
 // Request and response cycles
 
 // Request comes in here
@@ -12,6 +12,9 @@ var logger = require('morgan');
 // You can name these whatever you want
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var apiRouter = require('./routes/api');
+
+// api backends - spit out JSON data
 
 var app = express();
 
@@ -39,6 +42,7 @@ app.use('/', indexRouter);
 
 // any request coming off of /users is resolved by line 39, Eg: localhost:3000/users, localhost:3000/users/whatever/whatever
 app.use('/users', usersRouter);
+app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 // if none of the routers are able to terminate the request then the 404 page is spit out // This is also a middleware
