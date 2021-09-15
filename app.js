@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 require('./lib/models')
+var cors = require('cors')
+
 // Request and response cycles
 
 // Request comes in here
@@ -17,6 +19,7 @@ var apiRouter = require('./routes/api');
 // api backends - spit out JSON data
 
 var app = express();
+app.use(cors()) // We are getting the cors module to be used as a middleware by our server
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

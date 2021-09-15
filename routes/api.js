@@ -13,6 +13,25 @@ let {User} = require('../lib/models')
 // Get a User - GET /users/1 - get or fetch a user with id = 1
 // Get all users - GET /users - get or fetch all the users in the system - DONE
 
+// Get a User - GET /users/1 - get or fetch a user with id = 1
+router.get('/users/:id', async function(req, res, next) {
+    let u = await User.findOne({where: {id: req.params.id}})
+    res.json(u)
+});
+
+
+// Update - PUT /users/1 - update the user with id = 1
+router.put('/users/:id', async function(req, res, next) {
+    let u = await User.update(req.body, {where: { id: req.params.id}});
+    res.json(u)
+});
+
+// Delete - DELETE /users/1 - delete the user with id = 1
+router.delete('/users/:id', async function(req, res, next) {
+    let u = await User.destroy({where: { id: req.params.id}});
+    res.json(u)
+});
+
 // Get all users - GET /users - get or fetch all the users in the system
 router.get('/users', async function(req, res, next) {
     // request came in here
